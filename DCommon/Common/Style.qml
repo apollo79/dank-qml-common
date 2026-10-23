@@ -332,7 +332,7 @@ Singleton {
     readonly property color circularWavyProgressColor: theme?.circularWavyProgressColor ?? primary
     readonly property color circularWavyProgressTrackColor: theme?.circularWavyProgressTrackColor ?? secondaryContainer
     readonly property real circularWavyProgressSize: theme?.circularWavyProgressSize ?? 48
-    readonly property real circularWavyProgressStrokeWidth: theme?.circularWavyProgressProgressStrokeWidth ?? 4
+    readonly property real circularWavyProgressStrokeWidth: theme?.circularWavyProgressStrokeWidth ?? 4
     readonly property real circularWavyProgressTrackStrokeWidth: theme?.circularWavyProgressTrackStrokeWidth ?? 4
     readonly property real circularWavyProgressGapSize: theme?.circularWavyProgressGapSize ?? 4
     readonly property real circularWavyProgressWavelength: theme?.circularWavyProgressWavelength ?? 15

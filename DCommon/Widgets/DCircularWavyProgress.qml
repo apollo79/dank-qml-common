@@ -15,7 +15,7 @@ Item {
     property real waveSpeed: wavelength
     property real maxWaveAmplitude: Style.circularWavyProgressWaveAmplitude
     property real indeterminateAmplitude: 1
-    property var amplitudeFunction: function(p) {
+    property var amplitudeFunction: function (p) {
         return (p <= Style.circularWavyProgressAmplitudeRampStart || p >= Style.circularWavyProgressAmplitudeRampEnd) ? 0 : 1;
     }
     property real startAngle: Style.circularWavyProgressStartAngle
@@ -26,24 +26,22 @@ Item {
     property int rotationStepDuration: Style.circularWavyProgressRotationStepDuration
     property int rotationStepInterval: Style.circularWavyProgressRotationStepDelay
 
-    // Animated state
     property real currentAmplitude: 0
     property real waveOffset: 0
     property real indeterminateSweep: indeterminateMinProgress
     property real globalRotation: 0
     property real additionalRotation: 0
 
-    // Derived values
     readonly property real clampedProgress: {
-        var v = Number(progress);
+        const v = Number(progress);
         return isNaN(v) ? 0 : Math.max(0, Math.min(1, v));
     }
     readonly property real targetAmplitude: {
-        var v = indeterminate ? indeterminateAmplitude : amplitudeFunction(clampedProgress);
+        const v = indeterminate ? indeterminateAmplitude : amplitudeFunction(clampedProgress);
         return Math.max(0, Math.min(1, v));
     }
     readonly property int waveCount: {
-        var r = Math.min(width, height) / 2 - strokeWidth / 2;
+        const r = Math.min(width, height) / 2 - strokeWidth / 2;
         return (wavelength > 0 && r > 0) ? Math.max(5, Math.round(2 * Math.PI * r / wavelength)) : 5;
     }
     readonly property real spinAngle: globalRotation + additionalRotation
@@ -55,8 +53,7 @@ Item {
     readonly property real trackClearance: {
         if (sweepAngle <= 0)
             return 0;
-
-        var arcLength = sweepAngle * ringRadius;
+        const arcLength = sweepAngle * ringRadius;
         return 2 * Math.min(arcLength, strokeWidth / 2) + Math.min(arcLength, gapSize);
     }
     readonly property real trackStartAngle: sweepAngle + (ringRadius > 0 ? trackClearance / ringRadius : 0)
@@ -69,7 +66,7 @@ Item {
         if (indeterminate) {
             amplitudeAnim.stop();
             currentAmplitude = targetAmplitude;
-            return ;
+            return;
         }
         amplitudeAnim.stop();
         amplitudeAnim.from = currentAmplitude;
@@ -168,7 +165,6 @@ Item {
         PauseAnimation {
             duration: root.indeterminateCycleDuration - 3 * root.rotationStepInterval - root.rotationStepDuration
         }
-
     }
 
     // Grows linearly, shrinks with the standard easing.
@@ -192,7 +188,6 @@ Item {
             easing.type: Easing.BezierSpline
             easing.bezierCurve: Style.expressiveCurves.standard
         }
-
     }
 
     ShaderEffect {
@@ -218,5 +213,4 @@ Item {
         fragmentShader: Qt.resolvedUrl("../Shaders/qsb/circular_wavy_progress.frag.qsb")
         blending: true
     }
-
 }
