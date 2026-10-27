@@ -47,12 +47,14 @@ ListView {
     // Rows the model just inserted fade in; rows the view creates while scrolling do not
     readonly property bool populating: orphanSweep.running
     property bool rowFadeEnabled: Math.floor(Style.currentAnimationBaseDuration * 0.4) >= 1
+    property bool fadeInitialRows: true
     property int _insertFirst: 0
+    property bool _populateInsert: false
 
     // Called from a delegate's Component.onCompleted. A ViewTransition would park every position the
     // view writes while it runs (QQuickItemViewTransitionableItem::moveTo), so rows fade on their own.
     function fadeIn(row: Item, index: int) {
-        if (!rowFadeEnabled || !populating)
+        if (!rowFadeEnabled || !populating || (!fadeInitialRows && _populateInsert))
             return;
         row.opacity = 0;
         rowFade.createObject(row, {
@@ -134,8 +136,9 @@ ListView {
     Connections {
         target: listView.model?.objectName !== undefined ? listView.model : null
         ignoreUnknownSignals: true
-        function onRowsInserted(parent, first) {
+        function onRowsInserted(parent, first, last) {
             listView._insertFirst = first;
+            listView._populateInsert = last - first + 1 >= (listView.model.rowCount?.() ?? listView.count);
             orphanSweep.arm();
         }
         function onDataChanged() {
@@ -148,6 +151,7 @@ ListView {
             orphanSweep.arm();
         }
         function onModelReset() {
+            listView._populateInsert = true;
             orphanSweep.arm();
         }
     }
