@@ -109,8 +109,8 @@ FocusScope {
 
     property int triggerHeight: Style.iconButtonSize
     property real triggerRadius: Style.cornerRadiusXS
-    readonly property int menuItemHeight: Style.menuItemHeight
-    readonly property int menuPadding: Style.spacingS
+    readonly property int menuItemHeight: Style.menuRowHeight
+    readonly property int menuPadding: Style.menuPadding
     readonly property real menuItemRadius: Math.max(0, Style.windowRadius - menuPadding)
     readonly property int menuSpacing: Style.spacingXXS
 
@@ -806,7 +806,7 @@ FocusScope {
 
                                     DIcon {
                                         name: delegateRoot.iconName
-                                        size: Style.iconSizeMedium
+                                        size: Style.menuItemIconSize
                                         color: delegateRoot.contentColor
                                         visible: name !== ""
                                     }
@@ -814,14 +814,14 @@ FocusScope {
                                     Loader {
                                         id: optionImage
 
-                                        width: Style.iconSizeMedium
-                                        height: Style.iconSizeMedium
+                                        width: Style.menuItemIconSize
+                                        height: Style.menuItemIconSize
                                         anchors.verticalCenter: parent.verticalCenter
                                         active: delegateRoot.imageValue !== ""
                                         visible: active
                                         sourceComponent: AppIconRenderer {
                                             iconValue: delegateRoot.imageValue
-                                            iconSize: Style.iconSizeMedium
+                                            iconSize: Style.menuItemIconSize
                                             iconColor: delegateRoot.contentColor
                                             fallbackText: root.labelOf(delegateRoot.modelData).charAt(0).toUpperCase()
                                         }

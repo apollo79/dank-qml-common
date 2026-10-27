@@ -34,7 +34,7 @@ Singleton {
     readonly property var columnZoomFactors: [0.7, 0.85, 1, 1.15, 1.35, 1.6]
     readonly property real columnPaneMaxWidth: Style.sidebarWidth * 2.5
     readonly property real gridTilePadding: Style.spacingM
-    readonly property real gridTileVerticalPadding: Style.spacingM + densityStepS
+    readonly property real gridTileVerticalPadding: Math.max(Style.spacingS, Style.spacingM + densityStepS)
     readonly property real gridTileRadius: Style.cornerRadiusL
     readonly property real gridGap: Style.spacingM
     readonly property real gridNameSpacing: Style.spacingXS
@@ -60,7 +60,7 @@ Singleton {
 
     readonly property real listRowHeight: Style.minimumTouchTargetSize + densityStepM
     readonly property real listRowPadding: Style.spacingL
-    readonly property real listRowGap: Style.spacingM + densityStepS
+    readonly property real listRowGap: Math.max(Style.spacingS, Style.spacingM + densityStepS)
     readonly property real listCompactGap: Style.spacingS + densityStepS
     readonly property real listCompactRowHeight: Style.minimumTouchTargetSize * 0.75
     readonly property real nameColumnMinWidth: Style.spacingXL * 6
@@ -106,10 +106,10 @@ Singleton {
     readonly property int sidebarBreakpoint: Style.mediumBreakpoint
     readonly property real sidebarPadding: Style.spacingM
     readonly property real sidebarIconSize: Style.buttonHeightXS + densityStepS
-    readonly property real sidebarRowHeight: Style.buttonHeightS + densityStepM
+    readonly property real sidebarRowHeight: Math.max(Style.buttonHeightXS, Style.buttonHeightS + densityStepM)
     readonly property real sidebarRowRadius: Style.cornerRadiusM
     readonly property real sidebarRowGap: Math.max(0, Style.groupedListGap + densityLevel * Style.spacingXXS)
-    readonly property real sidebarGlyphSize: Style.iconSizeMedium
+    readonly property real sidebarGlyphSize: densityLevel < -1 ? Style.iconSizeSmall : Style.iconSizeMedium
     readonly property real usageWarnRatio: 0.9
     readonly property real paneRadius: Style.windowRadius
     readonly property real paneMargin: Style.spacingM

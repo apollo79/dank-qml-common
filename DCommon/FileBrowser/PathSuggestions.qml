@@ -12,7 +12,7 @@ Popup {
     property var rows: []
     property string errorText: ""
     property int highlightIndex: -1
-    readonly property real rowHeight: Style.menuItemHeight
+    readonly property real rowHeight: Style.menuRowHeight
 
     signal chosen(var row)
 
@@ -88,7 +88,7 @@ Popup {
                 anchors.leftMargin: Style.spacingM
                 anchors.verticalCenter: parent.verticalCenter
                 name: "error"
-                size: Style.iconSizeMedium
+                size: Style.menuItemIconSize
                 color: Style.error
             }
 
@@ -143,7 +143,7 @@ Popup {
                     anchors.leftMargin: Style.spacingM
                     anchors.verticalCenter: parent.verticalCenter
                     name: entry.modelData.kind === "visited" ? "history" : "folder"
-                    size: Style.iconSizeMedium
+                    size: Style.menuItemIconSize
                     color: Style.surfaceVariantText
                 }
 
