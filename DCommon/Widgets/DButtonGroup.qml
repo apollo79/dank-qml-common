@@ -173,7 +173,7 @@ Row {
             width: baseWidth
             height: root.buttonHeight
 
-            color: !root.enabled ? Style.onSurface_12 : (selected ? root.selectedColor : root.unselectedColor)
+            color: !root.enabled ? Style.onSurface_10 : (selected ? root.selectedColor : root.unselectedColor)
             border.color: "transparent"
             border.width: 0
 

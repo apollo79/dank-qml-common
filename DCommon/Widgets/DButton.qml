@@ -14,6 +14,7 @@ StyledButton {
     property color backgroundColor: Style.buttonBg
     property color textColor: Style.buttonText
     property int buttonHeight: Style.buttonHeightS
+    readonly property real labelSize: buttonHeight >= Style.buttonHeightM ? Style.fontSizeLarge : Style.fontSizeMedium
     horizontalPadding: {
         if (buttonHeight <= Style.buttonHeightXS)
             return Style.spacingM;
@@ -36,7 +37,7 @@ StyledButton {
     readonly property real pressedRadius: Style.buttonRadius(width, height, buttonHeight, true, shape === "round")
     property real pressProgress: pressed ? 1 : 0
     radius: restRadius + (pressedRadius - restRadius) * pressProgress
-    color: enabled ? backgroundColor : Style.onSurface_12
+    color: enabled ? backgroundColor : Style.onSurface_10
     scale: (enableScaleAnimation && pressed) ? Style.pressScale : 1.0
     Accessible.role: Accessible.Button
     Accessible.name: text || tooltipText || iconName
@@ -82,7 +83,7 @@ StyledButton {
         visible: false
         sourceComponent: StyledText {
             text: root.reserveText
-            font.pixelSize: Style.fontSizeMedium
+            font.pixelSize: root.labelSize
             font.weight: Style.fontWeightMedium
             wrapMode: Text.NoWrap
         }
@@ -131,7 +132,7 @@ StyledButton {
             wrapMode: root.wrapText ? Text.WrapAtWordBoundaryOrAnywhere : Text.NoWrap
             elide: root.wrapText ? Text.ElideNone : Text.ElideRight
             text: root.text
-            font.pixelSize: Style.fontSizeMedium
+            font.pixelSize: root.labelSize
             font.weight: Style.fontWeightMedium
             color: root.contentColor
             anchors.verticalCenter: parent.verticalCenter

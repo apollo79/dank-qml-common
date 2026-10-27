@@ -113,6 +113,7 @@ Singleton {
 
     property color warning: "#FF9800"
 
+    property color onSurface_10: withAlpha(onSurface, 0.1)
     property color onSurface_12: withAlpha(onSurface, 0.12)
     property color onSurface_38: withAlpha(onSurface, 0.38)
     property color surfaceTint: primary
@@ -229,7 +230,7 @@ Singleton {
     readonly property real sliderTrackHeight: 16
     readonly property real sliderHandleWidth: 4
     readonly property real sliderHandleWidthPressed: 2
-    readonly property real sliderHandleHeight: 28
+    readonly property real sliderHandleHeight: 44
     readonly property real sliderHandleGap: 6
     readonly property real sliderTrackHeightS: 24
     readonly property real sliderHandleHeightS: 36
@@ -348,14 +349,20 @@ Singleton {
     readonly property bool elevationEnabled: true
 
     readonly property real stateLayerHover: 0.08
-    readonly property real stateLayerFocus: 0.12
-    readonly property real stateLayerPressed: 0.12
+    readonly property real stateLayerFocus: 0.1
+    readonly property real stateLayerPressed: 0.1
     readonly property real stateLayerDrag: 0.16
 
     readonly property var springSpecs: ({
             "expressive": [560, 37],
             "fast": [220, 23],
-            "default": [300, 24]
+            "default": [300, 24],
+            "fastSpatial": [800, 33.9],
+            "defaultSpatial": [380, 31.2],
+            "slowSpatial": [200, 22.6],
+            "fastEffects": [3800, 123.3],
+            "defaultEffects": [1600, 80],
+            "slowEffects": [800, 56.6]
         })
     readonly property var springDampingScales: [1.22, 1.0, 0.82]
     readonly property bool springMotionDisabled: currentAnimationBaseDuration <= 0
