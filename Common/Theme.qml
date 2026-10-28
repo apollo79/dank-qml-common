@@ -309,8 +309,12 @@ Singleton {
     readonly property real textFieldFastEffectsStiffness: 3800
     readonly property real textFieldSlowEffectsStiffness: 800
     readonly property real textEditHeight: Math.round(fontSizeMedium * 8)
-    readonly property real tooltipMaxWidth: 500
+    readonly property real tooltipMaxWidth: 300
     readonly property int tooltipDelay: 400
+    readonly property real tooltipEnterScale: 0.8
+    readonly property real tooltipSpatialStiffness: 800
+    readonly property real tooltipSpatialDampingRatio: 0.6
+    readonly property real tooltipEffectsStiffness: 3800
     readonly property real scrollbarThickness: 6
     readonly property real scrollbarGap: spacingXS
     readonly property int scrollbarHideDelay: 1200

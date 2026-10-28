@@ -364,8 +364,12 @@ Singleton {
     readonly property real textFieldFastEffectsStiffness: theme?.textFieldFastEffectsStiffness ?? 3800
     readonly property real textFieldSlowEffectsStiffness: theme?.textFieldSlowEffectsStiffness ?? 800
     readonly property real textEditHeight: theme?.textEditHeight ?? Math.round(fontSizeMedium * 8)
-    readonly property real tooltipMaxWidth: theme?.tooltipMaxWidth ?? 500
+    readonly property real tooltipMaxWidth: theme?.tooltipMaxWidth ?? 300
     readonly property int tooltipDelay: theme?.tooltipDelay ?? 400
+    readonly property real tooltipEnterScale: theme?.tooltipEnterScale ?? 0.8
+    readonly property real tooltipSpatialStiffness: theme?.tooltipSpatialStiffness ?? 800
+    readonly property real tooltipSpatialDampingRatio: theme?.tooltipSpatialDampingRatio ?? 0.6
+    readonly property real tooltipEffectsStiffness: theme?.tooltipEffectsStiffness ?? 3800
     readonly property real scrollbarThickness: theme?.scrollbarThickness ?? 6
     readonly property real scrollbarGap: theme?.scrollbarGap ?? spacingXS
     readonly property int scrollbarHideDelay: theme?.scrollbarHideDelay ?? 1200
