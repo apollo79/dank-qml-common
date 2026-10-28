@@ -356,8 +356,8 @@ Singleton {
     readonly property real launcherScreenMargin: theme?.launcherScreenMargin ?? 100
 
     readonly property real fieldDefaultWidth: theme?.fieldDefaultWidth ?? 200
-    readonly property real fieldHeight: theme?.fieldHeight ?? Math.round(fontSizeMedium * 3)
-    readonly property real fieldHeightLarge: theme?.fieldHeightLarge ?? 48
+    readonly property real fieldHeight: theme?.fieldHeight ?? Math.round(fontSizeMedium * 3) + densityLevel * spacingXS
+    readonly property real fieldHeightLarge: theme?.fieldHeightLarge ?? 48 + densityLevel * spacingXS
     readonly property real outlinedFieldLabelLineHeight: theme?.outlinedFieldLabelLineHeight ?? 16
     readonly property real textFieldSpatialStiffness: theme?.textFieldSpatialStiffness ?? 800
     readonly property real textFieldSpatialDampingRatio: theme?.textFieldSpatialDampingRatio ?? 1
